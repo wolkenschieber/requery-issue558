@@ -2,6 +2,7 @@ package de.nebelhoernchen.requery558;
 
 import android.app.Application;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 
 import de.nebelhoernchen.requery558.model.Models;
 import io.requery.Persistable;
@@ -26,21 +27,23 @@ public class App extends Application
         StrictMode.enableDefaults();
     }
 
-    ReactiveEntityStore<Persistable> getData(TransactionMode transactionMode)
+    void setTransactionMode(@Nullable TransactionMode tranactionMode)
     {
-        if (dataStore == null)
-        {
-            DatabaseSource source = new DatabaseSource(this, Models.DEFAULT, DB_VERSION);
-            source.setTableCreationMode(TableCreationMode.DROP_CREATE);
-            source.setLoggingEnabled(true);
+        DatabaseSource source = new DatabaseSource(this, Models.DEFAULT, DB_VERSION);
+        source.setTableCreationMode(TableCreationMode.DROP_CREATE);
+        source.setLoggingEnabled(true);
 
-            ConfigurationBuilder configurationBuilder =
-                    new ConfigurationBuilder(source, Models.DEFAULT).useDefaultLogging();
-            configurationBuilder.setTransactionMode(transactionMode);
-            configurationBuilder.useDefaultLogging();
-            Configuration configuration = configurationBuilder.build();
-            dataStore = ReactiveSupport.toReactiveStore(new EntityDataStore<Persistable>(configuration));
-        }
+        ConfigurationBuilder configurationBuilder =
+                new ConfigurationBuilder(source, Models.DEFAULT).useDefaultLogging();
+
+        if (tranactionMode != null) configurationBuilder.setTransactionMode(tranactionMode);
+        configurationBuilder.useDefaultLogging();
+        Configuration configuration = configurationBuilder.build();
+        dataStore = ReactiveSupport.toReactiveStore(new EntityDataStore<Persistable>(configuration));
+    }
+
+    ReactiveEntityStore<Persistable> getData()
+    {
         return dataStore;
     }
 

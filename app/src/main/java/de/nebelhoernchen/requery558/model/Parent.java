@@ -20,7 +20,7 @@ public interface Parent
 
     Date getTimestamp();
 
-    @OneToMany(mappedBy = "parent", cascade = {CascadeAction.DELETE, CascadeAction.SAVE})
+    @OneToMany(cascade = {CascadeAction.DELETE, CascadeAction.SAVE})
     Result<Child> getChildren();
 
 }

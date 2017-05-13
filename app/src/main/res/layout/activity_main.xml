@@ -5,39 +5,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.nebelhoernchen.requery558.MainActivity">
+    tools:context="de.nebelhoernchen.requery558.MainActivity"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/buttonNONE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:onClick="btnOnClickStatements"
+        android:text="Run without transaction"/>
 
     <Button
         android:id="@+id/buttonTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Run with TransactionMode.NONE"
-        android:onClick="btnOnClickTransactionNone"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"
+        android:onClick="btnOnClickTransactionNone"
+        android:text="Run with TransactionMode.NONE"/>
 
     <Button
         android:id="@+id/buttonTM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
-        android:text="Run with TransactionMode.MANAGED"
-        android:onClick="btnOnClickTransactionManaged"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:onClick="btnOnClickTransactionManaged"
+        android:text="Run with TransactionMode.MANAGED"/>
 
     <Button
         android:id="@+id/buttonTA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:text="Run with TransactionMode.AUTO"
-        android:onClick="btnOnClickTransactionAuto"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="182dp"
+        android:onClick="btnOnClickTransactionAuto"
+        android:text="Run with TransactionMode.AUTO"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonTA">
+
+        <TextView
+            android:id="@+id/multilinetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:inputType="none"/>
+    </ScrollView>
 
 </RelativeLayout>
